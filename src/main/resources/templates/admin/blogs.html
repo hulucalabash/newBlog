@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments::head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>博客管理</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+<!--博客管理页面-->
+<body class="bg-3">
+    <!--导航-->
+    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small "
+         th:replace="admin/_fragments::menu(1)"><!--attached 是使得导航框铺满-->
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <!-------stackable 可堆叠 即手机小屏幕时可以适应---------->
+                <h2 class="ui teal header item">管理后台</h2>
+                <a href="#" class="active m-item  item m-mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="#" class=" m-item  item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class=" m-item  item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <div class=" m-item m-mobile-hide right menu">
+                    <div class="ui inverted dropdown item">
+                        <div class="text">
+                            <img src="../../static/img/1.jpg"  alt="" class="ui avatar image" style="width: 30px">
+                            呼噜
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--用jQuery获取menu toggle
+        又因为加了一个menu 使按钮的m-right-top属性有所修改变成了menu-->
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <!--在css-->
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <!--二级导航-->
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <!--若要将这俩个标签右移，则再设置一个菜单-->
+            <div class="right menu">
+                <a href="#" class="item" th:href="@{/admin/inputblog}">发布</a>
+                <a href="#" class="teal active item" th:href="@{/admin/blogs}">列表</a>
+            </div>
+
+        </div>
+    </div>
+    <!--中间部分-->
+    <div class="m-container-small m-padded-tb-big">
+        <div class="ui container">
+            <div class="ui  segment">
+                <form action="#" method="post" class="ui form ">
+                    <div class="inline  fields">
+                        <!--标题-->
+                        <div class="field">
+                            <input type="text" name="title" placeholder="标题">
+                        </div>
+                        <!--分类选择框menu-->
+                        <div class="field">
+                            <div class="ui selection dropdown">
+                                <input type="hidden" name="type">
+                                <i class="dropdown icon"></i>
+                                <!--相当于placeholder-->
+                                <div class="default text">分类</div>
+                                <div class="menu" >
+                                    <!--给后端传data-value中的数据-->
+                                    <div class="item" th:each="type:${types}" th:data-value="${type.id}" th:text="${type.name}">错误日志</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--是否推荐-->
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input type="checkbox" id="recommend" name="recommend">
+                                <!--input的id与label的for相对应 即戳一下label的文字则打钩checkbox-->
+                                <label for="recommend">推荐</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button class="ui teal basic right floated button"><i class="search icon"></i>搜索</button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+            <!--增加网格线-->
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <!--<th></th>-->
+                    <th>标题</th>
+                    <th>类型</th>
+                    <th>推荐</th>
+                    <th>更新时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody th:each="blog:${pageInfo.list}">
+                <tr>
+<!--
+                    <td>1</td>
+-->
+                    <td th:text="${blog.title}">麻衣学姐就是人间正义</td>
+                    <td th:text="${blog.getType().name}">二次元</td>
+                    <td th:text="${blog.recommend==1}?'是':'否'">是</td>
+                    <td th:text="${blog.getUpdate_time()}">2017-10-02 09:45</td>
+                    <td>
+                        <a href="#" class="ui teal basic mini button" th:href="@{'/admin/blog/update/'+${blog.id}}">编辑</a>
+                        <a href="#" class="ui red basic mini button" th:href="@{'/admin/blog/delete/'+${blog.id}}">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <!--colspan合并单元格-->
+                        <!--设置分页按钮 pagination为一种按钮-->
+                        <td colspan="6">
+                            <div class="ui pagination menu">
+                                <div class="item" th:href="@{/admin/blogs}"><a>首页</a></div>
+                                <a class="item" th:href="@{/admin/blogs(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.getPrePage()}:1)}">上一页</a>
+                                <a class="item" th:href="@{/admin/blogs(pageNum=${pageInfo.hasNextPage}?${pageInfo.getNextPage()}:${pageInfo.getPages()})}">下一页</a>
+                                <a class="item">尾页</a>
+                            </div>
+                            <a href="#" class="ui teal  mini right floated basic button" th:href="@{/admin/inputblog}">新增</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+        </div>
+
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--底部footer-->
+    <footer class="ui inverted vertical segment m-padded-tb-massive" th:replace="admin/_fragments::footer">
+        <div class="ui center aligned container"><!--将所有center aligned container里的内容居中  -->
+            <!--container用于前端响应式来包裹一些元素-->
+            <div class="ui inverted divided stackable grid">
+                <!--用于写一列一列 grid有16columns
+                divide 让grid分的column有线段间隔-->
+                <div class="three wide column">
+                    <div class="ui link list">
+                        <div class="item">
+                            <img src="../static/img/wechat.png " class="ui rounded image" alt="" style="width: 100px" >
+                        </div>
+                    </div>
+
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">最新博客</h4>
+                    <div class="ui inverted link list m-text-thin">
+                        <a href="#" class="item">用户故事（User Story）</a>
+                        <a href="#" class="item">用户故事（User Story）</a>
+                        <a href="#" class="item">用户故事（User Story）</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">联系我</h4>
+                    <div class="ui inverted link list m-text-thin">
+                        <a href="#" class="item">Tel:15851802630</a>
+                        <a href="#" class="item">QQ:244959425</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">Blog</h4>
+                    <p class="m-text-thin m-text-spaced m-text-lined m-text-opacity-mini">这是我的个人博客，有关编程，写作，思考的内容会在其中发布，希望能给看到的人有所帮助</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider "></div>
+            <p class="m-text-opacity-small">Copyright 2021 calabash designed by calabash</p>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+            /*--------toggleClass方法有这个属性则去除 没这个属性则删去---------*/
+
+        });
+/*----------js中id直接用#
+             其余的定位可以加一些只是用来定位的css属性
+
+             ---------------*/
+        $('.ui.dropdown').dropdown({
+            on:'hover'
+        })
+
+        ;
+
+    </script>
+
+
+
+</body>
+</html>

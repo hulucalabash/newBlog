@@ -1,0 +1,27 @@
+2021-03-28 12:42:43.725  INFO 63532 --- [http-nio-8082-exec-3] com.example.blog.asepect.LogAspect       : ===============请求内容===============
+2021-03-28 12:42:43.748  INFO 63532 --- [http-nio-8082-exec-3] com.example.blog.asepect.LogAspect       : 请求地址:http://localhost:8082/login
+2021-03-28 12:42:43.748  INFO 63532 --- [http-nio-8082-exec-3] com.example.blog.asepect.LogAspect       : 请求方式:GET
+2021-03-28 12:42:43.749  INFO 63532 --- [http-nio-8082-exec-3] com.example.blog.asepect.LogAspect       : 请求类方法:String com.example.blog.controller.LoginController.login()
+2021-03-28 12:42:43.749  INFO 63532 --- [http-nio-8082-exec-3] com.example.blog.asepect.LogAspect       : 请求方法名字 : com.example.blog.controller.LoginController.login
+2021-03-28 12:42:43.749  INFO 63532 --- [http-nio-8082-exec-3] com.example.blog.asepect.LogAspect       : 请求类方法参数:[]
+2021-03-28 12:42:43.749  INFO 63532 --- [http-nio-8082-exec-3] com.example.blog.asepect.LogAspect       : ===============请求内容===============
+2021-03-28 12:42:43.750  INFO 63532 --- [http-nio-8082-exec-3] com.example.blog.asepect.LogAspect       : RESPONSE : admin/login
+2021-03-28 12:42:43.819  INFO 63532 --- [http-nio-8082-exec-10] com.example.blog.asepect.LogAspect       : ===============请求内容===============
+2021-03-28 12:42:43.820  INFO 63532 --- [http-nio-8082-exec-10] com.example.blog.asepect.LogAspect       : 请求地址:http://localhost:8082/login
+2021-03-28 12:42:43.820  INFO 63532 --- [http-nio-8082-exec-10] com.example.blog.asepect.LogAspect       : 请求方式:GET
+2021-03-28 12:42:43.820  INFO 63532 --- [http-nio-8082-exec-10] com.example.blog.asepect.LogAspect       : 请求类方法:String com.example.blog.controller.LoginController.login()
+2021-03-28 12:42:43.820  INFO 63532 --- [http-nio-8082-exec-10] com.example.blog.asepect.LogAspect       : 请求方法名字 : com.example.blog.controller.LoginController.login
+2021-03-28 12:42:43.820  INFO 63532 --- [http-nio-8082-exec-10] com.example.blog.asepect.LogAspect       : 请求类方法参数:[]
+2021-03-28 12:42:43.820  INFO 63532 --- [http-nio-8082-exec-10] com.example.blog.asepect.LogAspect       : ===============请求内容===============
+2021-03-28 12:42:43.820  INFO 63532 --- [http-nio-8082-exec-10] com.example.blog.asepect.LogAspect       : RESPONSE : admin/login
+2021-03-28 12:42:48.014  INFO 63532 --- [http-nio-8082-exec-4] com.example.blog.asepect.LogAspect       : ===============请求内容===============
+2021-03-28 12:42:48.014  INFO 63532 --- [http-nio-8082-exec-4] com.example.blog.asepect.LogAspect       : 请求地址:http://localhost:8082/admin/login
+2021-03-28 12:42:48.014  INFO 63532 --- [http-nio-8082-exec-4] com.example.blog.asepect.LogAspect       : 请求方式:POST
+2021-03-28 12:42:48.014  INFO 63532 --- [http-nio-8082-exec-4] com.example.blog.asepect.LogAspect       : 请求类方法:String com.example.blog.controller.LoginController.login(String,String,Model,HttpSession,RedirectAttributesModelMap)
+2021-03-28 12:42:48.014  INFO 63532 --- [http-nio-8082-exec-4] com.example.blog.asepect.LogAspect       : 请求方法名字 : com.example.blog.controller.LoginController.login
+2021-03-28 12:42:48.014  INFO 63532 --- [http-nio-8082-exec-4] com.example.blog.asepect.LogAspect       : 请求类方法参数:[dad, 123456, {}, org.apache.catalina.session.StandardSessionFacade@7a225401, {}]
+2021-03-28 12:42:48.014  INFO 63532 --- [http-nio-8082-exec-4] com.example.blog.asepect.LogAspect       : ===============请求内容===============
+2021-03-28 12:42:48.018 DEBUG 63532 --- [http-nio-8082-exec-4] c.example.blog.mapper.UserMap.getusers   : ==>  Preparing: Select * from user
+2021-03-28 12:42:48.019 DEBUG 63532 --- [http-nio-8082-exec-4] c.example.blog.mapper.UserMap.getusers   : ==> Parameters: 
+2021-03-28 12:42:48.028 DEBUG 63532 --- [http-nio-8082-exec-4] c.example.blog.mapper.UserMap.getusers   : <==      Total: 2
+2021-03-28 12:42:48.029  INFO 63532 --- [http-nio-8082-exec-4] com.example.blog.asepect.LogAspect       : RESPONSE : admin/index

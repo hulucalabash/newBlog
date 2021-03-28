@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment::head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>关于我页</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="./static/css/me.css">
+</head>
+<body class="bg-2">
+    <!--导航-->
+    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small " th:replace="fragment::menu(4)"><!--attached 是使得导航框铺满-->
+
+    </nav>
+
+    <!--中间部分-->
+    <div class="m-container m-padded-tb-big">
+        <div class="ui container">
+            <div class="ui stackable  grid">
+                <div class="eleven wide column">
+                        <img src="./static/img/about me.jpg" alt="" class="ui rounded image m-shadow-big" height="500px" width="600px" >
+                </div>
+                <div class="five wide column">
+                    <div class="ui top attached segment">
+                        <div class="ui header">关于我</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <p class="m-text">呼噜，虽然行为异常，潇洒不羁，但也的的确确是个美女罢了。</p>
+                        <p class="m-text">立个flag，希望一个礼拜之内能把这个博客写完，不要啪啪打脸</p>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui orange basic left pointing label m-margin-bottom-small">编程</div>
+                        <div class="ui orange basic left pointing label m-margin-bottom-small">写作</div>
+                        <div class="ui orange basic left pointing label m-margin-bottom-small">思想</div>
+                        <div class="ui orange basic left pointing label m-margin-bottom-small">音乐</div>
+                        <div class="ui orange basic left pointing label m-margin-bottom-small">文章</div>
+                        <div class="ui orange basic left pointing label m-margin-bottom-small">恋爱</div>
+                    </div>
+                    <div class="ui attached segment">
+                        <div class="ui teal basic  label m-margin-bottom-small">Java</div>
+                        <div class="ui teal basic  label m-margin-bottom-small">JavaScript</div>
+                        <div class="ui teal basic  label m-margin-bottom-small">MySql</div>
+
+                    </div>
+                    <div class="ui bottom attached segment">
+                        <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
+                        <a href="#" class="ui wechat circular icon button"><i class="wechat icon"></i></a>
+                        <div class="ui flowing popup top left transition hidden">
+                            <div class="ui orange basic label">
+                                <div class="ui images"style="font-size: inherit!important">
+                                    <img src="./static/img/wechat.png" style="width: 120px" ;>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <a href="#" class="ui qq circular icon button" data-content="244959425" data-position="bottom center"><i class="qq icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <!--底部footer-->
+    <footer class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container"><!--将所有center aligned container里的内容居中  -->
+            <!--container用于前端响应式来包裹一些元素-->
+            <div class="ui inverted divided stackable grid">
+                <!--用于写一列一列 grid有16columns
+                divide 让grid分的column有线段间隔-->
+                <div class="three wide column">
+                    <div class="ui link list">
+                        <div class="item">
+                            <img src="static/img/wechat.png " class="ui rounded image" alt="" style="width: 100px" >
+                        </div>
+                    </div>
+
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">最新博客</h4>
+                    <div class="ui inverted link list m-text-thin">
+                        <a href="#" class="item">用户故事（User Story）</a>
+                        <a href="#" class="item">用户故事（User Story）</a>
+                        <a href="#" class="item">用户故事（User Story）</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">联系我</h4>
+                    <div class="ui inverted link list m-text-thin">
+                        <a href="#" class="item">Tel:15851802630</a>
+                        <a href="#" class="item">QQ:244959425</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">Blog</h4>
+                    <p class="m-text-thin m-text-spaced m-text-lined m-text-opacity-mini">这是我的个人博客，有关编程，写作，思考的内容会在其中发布，希望能给看到的人有所帮助</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider "></div>
+            <p class="m-text-opacity-small">Copyright 2021 calabash designed by calabash</p>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+            /*--------toggleClass方法有这个属性则去除 没这个属性则删去---------*/
+
+        });
+/*----------js中id直接用#
+             其余的定位可以加一些只是用来定位的css属性
+
+             ---------------*/
+
+        $('.qq.button').popup({
+        })
+        $('.wechat.button').popup({
+            /*--定位属性---*/
+            popup:$('.wechat.image'),
+            /*------触发位置-------*/
+            position:'bottom center'
+        });
+    </script>
+
+
+
+</body>
+</html>

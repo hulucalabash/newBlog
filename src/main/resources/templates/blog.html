@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>博客详情</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/static/css/typo.css}">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
+    <!--代码高亮-->
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+</head>
+<body class="bg-1">
+    <!--导航-->
+    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small"><!--attached 是使得导航框铺满-->
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <!-------stackable 可堆叠 即手机小屏幕时可以适应---------->
+                <h2 class="ui teal header item">Blog</h2>
+                <a href="#" class="m-item  item m-mobile-hide"><i class="home icon"></i>首页</a>
+                <a href="#" class="m-item  item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class="m-item  item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="#" class="m-item  item m-mobile-hide"><i class="clone icon"></i>归档</a>
+                <a href="#" class="m-item  item m-mobile-hide"><i class="info icon"></i>关于我</a>
+                <div class="right item">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" placeholder="Search...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--用jQuery获取menu toggle
+        又因为加了一个menu 使按钮的m-right-top属性有所修改变成了menu-->
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <!--在css-->
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+    <!--中间部分-->
+    <div class="m-container-small m-padded-tb-big animated fadeIn">
+        <div class="ui container">
+            <!--几个segment 第一个top 最后一个bottom 上下才有圆角 都有attached-->
+            <div class="ui top attached segment">
+                <div class="ui  horizontal link list">
+                    <!--设置水平horizontal的列表------list=>item-->
+                    <div class="item">
+                        <img src="./static/img/1.jpg" th:src="@{/img/1.jpg}" alt="" class="ui avatar image" >
+                        <div class="content"><a href="#" class="header">呼噜</a></div>
+
+                    </div>
+                    <div class="item">
+                        <i class="calendar icon"></i>2021/2/2
+                    </div>
+                    <div class="item">
+                        <i class="eye icon"></i>123
+                    </div>
+                </div>
+            </div>
+            <div class="ui attached segment">
+                <!--图片区域-->
+                <img src="../static/img/4.jpeg" th:src="@{/img/4.jpeg}" class="ui fluid rounded image">
+                <!--ui fluid image 使得图片适应segment
+                rounded设置为圆角-->
+            </div>
+            <div class="ui attached m-padded-big segment">
+                <!--内容-->
+                <div class="ui right aligned  basic segment">
+                    <div class="ui orange basic label">原创</div>
+                </div>
+                <!--标题-->
+                <h2 class="ui center aligned header">
+                    樱岛麻衣就是人间正义！
+                </h2>
+                <div class="ui section divider"></div>
+                <div id="content" class="typo typo-selection m-padded-lr-responsive">
+                    <!--设置左右间距-->
+                    <p>要和大家聊的动画是这个——《青春猪头少年不会梦见兔女郎学姐》。 </p>
+
+                    <p>
+                        如果阿宅菌没记错的话前一阵子阿宅菌在百度上看到一篇这样的报道，有网友公布了今年十月新番中的人气少女排行榜，其中前三名有《SSSS.GRIDMAN》的宝多六花，还有《终将成为你》的小糸侑。而一开始的时候这个第一名的位置却落在了这部《青春猪头少年不会梦见兔女郎学姐》中的女主樱岛麻衣的身上？
+                    </p>
+                    <p> 这点当初阿宅菌我能预感到麻衣会上榜，但没想到她居然排名第一？要知道今年十月新番中有实力的女角色可不少，特别是隔壁《SSSS.GRIDMAN》中就有两个阿宅菌非常喜欢的妹子，一个是宝多六花，另一个则是新条茜。这两人可以说在国内的受众方面是非常厉害的，因此阿宅菌当时更觉得新条茜或者宝多六花会登顶，可是没想到居然让麻衣抢了冠军确实有点意外。
+                    </p>
+                    <p> 当然了，据后来的欧美最新排名麻衣跌落第三。最意外的还是百合番的小糸侑升至到了榜首宝多六花稳居第二？看来欧美人挺喜欢这种类型的动画啊~（哭笑）。但不管怎么样，小糸侑能成为第一那是欧美人的审美观，放在国内还不一定好用。因此阿宅菌觉得如果是国内现今的人气女主排名我觉得是麻衣和六花争天下。
+                    </p>
+                    <p>当然了，如果算上配角那么《SSSS.GRIDMAN》中的新条茜也得说一下，因为现在她的人气可不输于宝多六花，而且关于这个角色她是阿宅菌见过的十月角色中最早被网友出COS的角色，因此在人气方面就无语再多做强调了。但问题在于她并不是女主，因此我们剔除在排名之外只看主角。
+                    </p>
+                    <p>那么在抛开欧美的审美观回顾现在，樱岛麻衣这个角色当初为什么会在国内登顶榜首成为十月第一人气女角色的呢？阿宅菌仔细想了想，结合第一集到现在的观察后我终于知道了大家为什么会喜欢这位女主了。
+                    </p>
+                    <p>原来，如果你仔细看这部动画你会发现，尽管麻衣平时总是一副姐姐的样子，不仅在面对男主还是其他人她都是一副从容的样子。这点可以说这个女生很成熟，是经历过大风大浪的人物让人觉得非常非常靠谱。
+                    </p>
+                    <p>只是后来经过一系列的接触以及接受帮助之后她最终喜欢上了比她年龄小的男主，从此也是仅仅局限于男主才会放下架子绽放出女生该有的娇的样子，这点深受民众喜欢。毕竟大家都喜欢攻克女王然后看女王对自己娇的样子非常可爱。
+                    </p>
+                    <p>当然了，除去冰冷内娇的性格非常可爱之外，樱岛麻衣还有一个最强的杀手锏。她对男主非常的信任，这点可以说是她为什么会获得人气第一的关键。要知道我们的男主是出了名的骚话王，在整整10集下来接触过的女生也不少了，更厉害的一点还是他经常会带女生回自己的家，同时还多次被自己的女朋友给当场抓住。
+                    </p>
+                    <p>          只是面对于男主屡次带女生回家这一点，我们的女主麻衣显然也表现出了醋意，但是更多的她会选择理智去看待这件事。了解前因后果之后再对男主的行为做出相应的让步，这点可以说是麻衣最大的成功。因为她非常信任男主，从不计较男主带女生回家，理智看待事物做出合理的让步，敢问这样的女朋友你去哪里找？
+                    </p>
+                    <p>因此综合以上观点，樱岛麻衣最终会登顶国内十月人气动漫女主第一名也就释然了。所以说，在看完这部动画的同时也告诉了我们一个道理：一个能够通情达理善解人意的女友是有旺夫之命，因得此女小辈后生可畏也。当然前提是你首先得有个女朋友。（滑稽）
+                     最后就是关于现在麻衣与六花的排名究竟谁更高阿宅菌也不知道，毕竟今天所说的是一开始的时候麻衣的排名确实是第一点，但现在还是不是第一只有单独再开篇投票文章测试一下才知道。但不管怎么说至少她曾经确实是第一名，因此阿宅菌所说的也是当时她为何会受欢迎的原因，因此还希望大家理智看文。当然了，如果大家对六花感兴趣阿宅菌也可以单独开篇文章点评一下六花为何会受欢迎。不过不管是麻衣还是六花，阿宅菌只想告诉大家我十月的本命除了新条茜我谁也不服。
+                    </p>
+
+                </div>
+                <!--标签-->
+                <div class="m-margin-left m-margin-top-big">
+                    <div class="ui left pointing teal basic label ">方法论</div>
+                </div>
+                <!--赞赏-->
+                <!--popup形成触发效果-->
+                <div class="ui center aligned basic segment">
+                    <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                </div>
+                <div class="ui payQR flowing popup  transition hidden">
+                    <div class="ui basic orange label">
+                        <div class="ui images" style="font-size:  inherit !important;">
+                            <div class="image">
+                                <img src="./static/img/wechat.png" th:src="@{/img/wechat.png}"  class="ui rounded bordered image" style="width: 120px">
+                                <div>支付宝</div>
+                            </div>
+                            <div class="image">
+                                <img src="./static/img/wechat.png" th:src="@{/img/wechat.png}" class="ui rounded bordered image" style="width: 120px">
+                                <div>微信</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--讲segment设置为message才有postive背景色-->
+            <div class="ui attached positive message">
+               <div class="ui grid">
+                   <div class="middle aligned eleven wide column">
+                       <ui class="list">
+                           <li>作者：呼噜（联系作者）</li>
+                           <li>发表时间：2021-03-01</li>
+                           <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0）</li>
+                           <li>公众号转载：请在文末添加作者公众号二维码</li>
+                       </ui>
+                   </div>
+                   <div class=" five wide column ">
+                           <a href="#" target="_blank">
+                               <!--设置为右浮动-->
+                               <img src="./static/img/wechat.png" th:src="@{/img/wechat.png}" class="ui  rounded bordered right floated image" style="width: 120px">
+                           </a>
+                   </div>
+               </div>
+            </div>
+            <div class="ui bottom attached segment">
+                <!--留言区域列表-->
+                <div class="ui teal segment">
+                    <div class="ui threaded comments">
+                        <h3 class="ui dividing header">Comments</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="./static/img/2.jpg" th:src="@{/img/2.jpg}">
+                            </a>
+                            <div class="content">
+                                <a class="author">Matt</a>
+                                <div class="metadata">
+                                    <span class="date">Today at 5:42PM</span>
+                                </div>
+                                <div class="text">
+                                    How artistic!
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="./static/img/2.jpg" th:src="@{/img/2.jpg}">
+                            </a>
+                            <div class="content">
+                                <a class="author">Elliot Fu</a>
+                                <div class="metadata">
+                                    <span class="date">Yesterday at 12:30AM</span>
+                                </div>
+                                <div class="text">
+                                    <p>This has been very useful for my research. Thanks as well!</p>
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">Reply</a>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="./static/img/2.jpg" th:src="@{/img/2.jpg}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Jenny Hess</a>
+                                        <div class="metadata">
+                                            <span class="date">Just now</span>
+                                        </div>
+                                        <div class="text">
+                                            Elliot you are always so right :)
+                                        </div>
+                                        <div class="actions">
+                                            <a class="reply">Reply</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="./static/img/2.jpg" th:src="@{/img/2.jpg}">
+                            </a>
+                            <div class="content">
+                                <a class="author">Joe Henderson</a>
+                                <div class="metadata">
+                                    <span class="date">5 days ago</span>
+                                </div>
+                                <div class="text">
+                                    Dude, this is awesome. Thanks so much
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">Reply</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                       <div class="ui form">
+                        <div class="field">
+                            <textarea name="content" placeholder="请输入评论内容..."></textarea>
+                        </div>
+                           <div class="fields">
+                               <div class="field m-mobile-wide m-margin-bottom-small">
+                                   <div class="ui icon input">
+                                       <input type="text" name="nickname" placeholder="姓名">
+                                       <i class="user icon"></i>
+                                   </div>
+
+                               </div>
+                               <div class="field m-mobile-wide m-margin-bottom-small">
+                                   <div class="ui icon input">
+                                       <input type="text" name="email" placeholder="邮箱">
+                                       <i class="mail icon"></i>
+                                   </div>
+                               </div>
+                               <div class="filed m-mobile-wide">
+                                   <button class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                               </div>
+
+                           </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <!--底部footer-->
+    <div th:replace="fragment::foot"></div>
+
+    <!--引入的js-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <!--代码高亮-->
+<script src="../static/lib/prism/prism.js" ></script>
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+            /*--------toggleClass方法有这个属性则去除 没这个属性则删去---------*/
+
+        });
+/*----------js中id直接用#
+             其余的定位可以加一些只是用来定位的css属性
+
+             ---------------*/
+
+        /*-----赞赏触发-----*/
+        $('#payButton').popup({
+            /*--定位属性---*/
+                popup:$('.payQR.popup'),
+                /*----触发方式-----*/
+                on:'click',
+                /*------触发位置-------*/
+                position:'bottom center'
+            });
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
+    <!--代码高亮-->
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+</head>
+
+
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small" th:fragment="menu(index)"><!--attached 是使得导航框铺满-->
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <!-------stackable 可堆叠 即手机小屏幕时可以适应---------->
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" th:href="@{/}" class="m-item  item m-mobile-hide" th:classappend="${index==0}?'active'"><i class="home icon"></i>首页</a>
+            <a href="#" class="m-item  item m-mobile-hide" th:classappend="${index==1}?'active'"><i class="idea icon"></i>分类</a>
+            <a href="#" class="m-item  item m-mobile-hide" th:classappend="${index==2}?'active'"><i class="tags icon"></i>标签</a>
+            <a href="#" class="m-item  item m-mobile-hide" th:classappend="${index==3}?'active'"><i class="clone icon"></i>归档</a>
+            <a href="#" class="m-item  item m-mobile-hide" th:classappend="${index==4}?'active'"><i class="info icon"></i>关于我</a>
+            <div class="right item">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--用jQuery获取menu toggle
+    又因为加了一个menu 使按钮的m-right-top属性有所修改变成了menu-->
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <!--在css-->
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<!--底部-->
+<footer class="ui inverted vertical segment m-padded-tb-massive" th:fragment="foot">
+    <div class="ui center aligned container"><!--将所有center aligned container里的内容居中  -->
+        <!--container用于前端响应式来包裹一些元素-->
+        <div class="ui inverted divided stackable grid">
+            <!--用于写一列一列 grid有16columns
+            divide 让grid分的column有线段间隔-->
+            <div class="three wide column">
+                <div class="ui link list">
+                    <div class="item">
+                        <img src="static/img/wechat.png " th:src="@{/img/wechat.png}" class="ui rounded image" alt="" style="width: 100px" >
+                    </div>
+                </div>
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">最新博客</h4>
+                <div class="ui inverted link list m-text-thin">
+                    <a href="#" class="item">用户故事（User Story）</a>
+                    <a href="#" class="item">用户故事（User Story）</a>
+                    <a href="#" class="item">用户故事（User Story）</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">联系我</h4>
+                <div class="ui inverted link list m-text-thin">
+                    <a href="#" class="item">Tel:15851802630</a>
+                    <a href="#" class="item">QQ:244959425</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced m-text-lined ">Blog</h4>
+                <p class="m-text-thin m-text-spaced m-text-lined m-text-opacity-mini">这是我的个人博客，有关编程，写作，思考的内容会在其中发布，希望能给看到的人有所帮助</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider "></div>
+        <p class="m-text-opacity-small">Copyright 2021 calabash designed by calabash</p>
+    </div>
+</footer>
+<body>
+
+</body>
+</html>

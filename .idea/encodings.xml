@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/static/css/animate.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/static/css/typo.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/static/js/md5.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/static/lib/prism" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/admin/_fragments.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/admin/blogs-input.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/admin/index.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/admin/login.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/admin/tags-input.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/admin/tags.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/admin/types-input.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/templates/admin/types.html" charset="GBK" />
+  </component>
+</project>

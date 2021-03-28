@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment::head(~{::title})">
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+<nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small" th:replace="fragment::menu(5)">
+</nav>
+<h2 th:text="'错误路径:'+${path}"></h2>
+<h2 th:text="'错误时间:'+${timestamp}"></h2>
+<h2 th:text="'错误信息:'+${message}"></h2>
+<h2 th:text="'错误内容:'+${myerror}"></h2>
+<h2 th:text="'错误状态:'+${status}"></h2>
+
+</body>
+</html>
