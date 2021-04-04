@@ -7,7 +7,9 @@ package com.example.blog.service;
         *
         **/
 
+import com.example.blog.pojo.Blog;
 import com.example.blog.pojo.Tag;
+import com.example.blog.pojo.TagTop;
 
 import java.util.List;
 
@@ -26,5 +28,7 @@ public interface TagService {
     List<Tag> getAllTags();
     Tag getTagById(Integer id);
     Tag getTagByName(String name);
+    List<TagTop> getTagTop(Integer num);
+    List<Tag> getBlogTag(Blog blog);
 
 }

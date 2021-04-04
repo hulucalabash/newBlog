@@ -110,7 +110,7 @@
                     <td th:text="${blog.title}">麻衣学姐就是人间正义</td>
                     <td th:text="${blog.getType().name}">二次元</td>
                     <td th:text="${blog.recommend==1}?'是':'否'">是</td>
-                    <td th:text="${blog.getUpdate_time()}">2017-10-02 09:45</td>
+                    <td th:text="${#dates.format(blog.update_time,'yyyy-MM-dd')}">2017-10-02 09:45</td>
                     <td>
                         <a href="#" class="ui teal basic mini button" th:href="@{'/admin/blog/update/'+${blog.id}}">编辑</a>
                         <a href="#" class="ui red basic mini button" th:href="@{'/admin/blog/delete/'+${blog.id}}">删除</a>

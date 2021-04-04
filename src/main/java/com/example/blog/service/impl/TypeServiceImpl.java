@@ -9,6 +9,7 @@ package com.example.blog.service.impl;
 
 import com.example.blog.mapper.TypeMap;
 import com.example.blog.pojo.Type;
+import com.example.blog.pojo.TypeTop;
 import com.example.blog.service.TypeService;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +54,12 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type getTypeByName(String name) {
         return null;
+    }
+
+    /*获得首页推荐的type*/
+    @Override
+    public List<TypeTop> getTypeTop(Integer num) {
+        List<TypeTop> typeTop = typeMap.getTypeTop(num);
+        return typeTop;
     }
 }

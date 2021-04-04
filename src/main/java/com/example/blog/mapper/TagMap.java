@@ -7,7 +7,9 @@ package com.example.blog.mapper;
         *
         **/
 
+import com.example.blog.pojo.Blog;
 import com.example.blog.pojo.Tag;
+import com.example.blog.pojo.TagTop;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -41,4 +43,12 @@ public interface TagMap {
     /*根据name获取tag*/
     @Select("Select * from tag where name=#{name}")
     Tag getTagByName(String name);
+
+    @Select("SELECT t.name,count(*) as num FROM blogtag bt,tag t\n" +
+            "WHERE  t.id=bt.tag_id\n" +
+            "GROUP BY t.name;\n")
+    List<TagTop> getTagTop(Integer num);
+
+    @Select("SELECT tag.id,tag.name FROM blog,blogtag,tag WHERE blogtag.blog_id=#{id} AND tag.id=blogtag.tag_id group by tag.id;")
+    List<Tag> getBlogTags(Blog blog);
 }

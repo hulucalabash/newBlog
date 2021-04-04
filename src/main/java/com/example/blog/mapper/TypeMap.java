@@ -8,6 +8,7 @@ package com.example.blog.mapper;
         **/
 
 import com.example.blog.pojo.Type;
+import com.example.blog.pojo.TypeTop;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -41,4 +42,11 @@ public interface TypeMap {
     /*根据name获取type*/
     @Select("Select * from type where name=#{name}")
     Type getTypeByName(String name);
+
+    /*获得首页推荐的type*/
+    @Select("Select type.name ,count(*) as num FROM blog,type\n" +
+            " WHERE type.id=blog.type_id \n" +
+            "GROUP BY blog.type_id\n" +
+            "ORDER BY count(*) DESC;")
+    List<TypeTop> getTypeTop(Integer num);
 }

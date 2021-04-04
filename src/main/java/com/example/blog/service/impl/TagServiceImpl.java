@@ -8,7 +8,9 @@ package com.example.blog.service.impl;
         **/
 
 import com.example.blog.mapper.TagMap;
+import com.example.blog.pojo.Blog;
 import com.example.blog.pojo.Tag;
+import com.example.blog.pojo.TagTop;
 import com.example.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +54,17 @@ public class TagServiceImpl implements TagService {
     @Override
     public Tag getTagByName(String name) {
         return null;
+    }
+
+    @Override
+    public List<TagTop> getTagTop(Integer num) {
+        List<TagTop> tagTop = tagMap.getTagTop(num);
+        return tagTop;
+    }
+
+    @Override
+    public List<Tag> getBlogTag(Blog blog) {
+        List<Tag> tags = tagMap.getBlogTags(blog);
+        return tags;
     }
 }

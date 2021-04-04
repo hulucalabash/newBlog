@@ -39,6 +39,9 @@
 
 */
 /*------margin外间距-------*/
+.m-margin-right{
+    margin-right: 1em!important;
+}
 
 .m-margin{
     margin: 0.5em!important;
@@ -135,6 +138,10 @@
     padding-right: 1em!important;
 }
 
+.m-padded-right-big{
+    padding-right: 3em!important;
+}
+
 /*----------text------------*/
 .m-text{
     font-weight: 300 !important;/*字体粗细*/
@@ -223,7 +230,7 @@
 
 /*--------color--------*/
 .m-color{
-    color: #333!important;
+    color: #1d75b3!important;
 }
 /*-----float-------*/
 .m-right-float{

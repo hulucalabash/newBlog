@@ -8,13 +8,12 @@ package com.example.blog.controller;
         **/
 
 import com.example.blog.pojo.User;
-import com.example.blog.service.UerService;
+import com.example.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
@@ -24,7 +23,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    public UerService uerService;
+    public UserService userService;
 
     @GetMapping("/login")
     public String login(){
@@ -43,7 +42,7 @@ public class LoginController {
                         HttpSession session,
                         RedirectAttributesModelMap redirectAttributesModelMap){
 
-        User user = uerService.checkUser(username, password);
+        User user = userService.checkUser(username, password);
         session.setAttribute("user",user);
         model.addAttribute("user",user);
         if(user!=null){

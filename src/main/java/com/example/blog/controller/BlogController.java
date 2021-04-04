@@ -46,12 +46,7 @@ public class BlogController {
 
         List<Blog> blogs = blogService.getAllBlogs();
         model.addAttribute("pageInfo",pageInfo);
-        for (Blog blog:blogs
-             ) {
-            /*System.out.println(blog.getUpdateTime());*/
-            System.out.println(blog.getTitle());
 
-        }
 
         return "admin/blogs";
     }

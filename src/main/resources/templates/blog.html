@@ -13,30 +13,8 @@
 </head>
 <body class="bg-1">
     <!--导航-->
-    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small"><!--attached 是使得导航框铺满-->
-        <div class="ui container">
-            <div class="ui inverted secondary stackable menu">
-                <!-------stackable 可堆叠 即手机小屏幕时可以适应---------->
-                <h2 class="ui teal header item">Blog</h2>
-                <a href="#" class="m-item  item m-mobile-hide"><i class="home icon"></i>首页</a>
-                <a href="#" class="m-item  item m-mobile-hide"><i class="idea icon"></i>分类</a>
-                <a href="#" class="m-item  item m-mobile-hide"><i class="tags icon"></i>标签</a>
-                <a href="#" class="m-item  item m-mobile-hide"><i class="clone icon"></i>归档</a>
-                <a href="#" class="m-item  item m-mobile-hide"><i class="info icon"></i>关于我</a>
-                <div class="right item">
-                    <div class="ui icon inverted transparent input">
-                        <input type="text" placeholder="Search...">
-                        <i class="search link icon"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--用jQuery获取menu toggle
-        又因为加了一个menu 使按钮的m-right-top属性有所修改变成了menu-->
-        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
-            <!--在css-->
-            <i class="sidebar icon"></i>
-        </a>
+    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small" th:replace="fragment::menu(5)"><!--attached 是使得导航框铺满-->
+
     </nav>
 
     <!--中间部分-->
@@ -47,35 +25,42 @@
                 <div class="ui  horizontal link list">
                     <!--设置水平horizontal的列表------list=>item-->
                     <div class="item">
-                        <img src="./static/img/1.jpg" th:src="@{/img/1.jpg}" alt="" class="ui avatar image" >
-                        <div class="content"><a href="#" class="header">呼噜</a></div>
+                        <img src="./static/img/1.jpg" th:src="@{${blog.getUser().avatar}}"  alt="" class="ui avatar image" >
+                        <div class="content"><a href="#" class="header" th:text="${blog.getUser().username}">呼噜</a></div>
 
                     </div>
                     <div class="item">
-                        <i class="calendar icon"></i>2021/2/2
+                        <i class="calendar icon" ></i>
                     </div>
                     <div class="item">
-                        <i class="eye icon"></i>123
+                        <span th:text="${#dates.format(blog.getCreate_time(),'yyyy-MM-dd')}"></span>
                     </div>
+                    <div class="item">
+                        <i class="eye icon"></i>
+                    </div>
+                    <div class="item">
+                        <span th:text="${blog.views}">55</span>
+                    </div>
+
                 </div>
             </div>
             <div class="ui attached segment">
                 <!--图片区域-->
-                <img src="../static/img/4.jpeg" th:src="@{/img/4.jpeg}" class="ui fluid rounded image">
+                <img src="../static/img/4.jpeg" th:src="@{${blog.first_picture}}" class="ui fluid rounded image">
                 <!--ui fluid image 使得图片适应segment
                 rounded设置为圆角-->
             </div>
             <div class="ui attached m-padded-big segment">
                 <!--内容-->
                 <div class="ui right aligned  basic segment">
-                    <div class="ui orange basic label">原创</div>
+                    <div class="ui orange basic label" th:text="${blog.flag}">原创</div>
                 </div>
                 <!--标题-->
-                <h2 class="ui center aligned header">
+                <h2 class="ui center aligned header" th:text="${blog.title}">
                     樱岛麻衣就是人间正义！
                 </h2>
                 <div class="ui section divider"></div>
-                <div id="content" class="typo typo-selection m-padded-lr-responsive">
+                <div id="content" class="typo typo-selection m-padded-lr-responsive" th:text="${blog.content}">
                     <!--设置左右间距-->
                     <p>要和大家聊的动画是这个——《青春猪头少年不会梦见兔女郎学姐》。 </p>
 
@@ -105,7 +90,9 @@
                 </div>
                 <!--标签-->
                 <div class="m-margin-left m-margin-top-big">
-                    <div class="ui left pointing teal basic label ">方法论</div>
+                    <div class="ui left pointing teal basic label " th:each="tag:${blog.getTags()}">
+                        <span th:text="${tag.name}"></span>
+                    </div>
                 </div>
                 <!--赞赏-->
                 <!--popup形成触发效果-->
@@ -133,8 +120,10 @@
                <div class="ui grid">
                    <div class="middle aligned eleven wide column">
                        <ui class="list">
-                           <li>作者：呼噜（联系作者）</li>
-                           <li>发表时间：2021-03-01</li>
+                           <li>作者：<a href="#" target="_blank" th:text="${blog.getUser().username}">呼噜</a>（联系作者）</li>
+                           <li>发表时间:
+                               <span th:text="${#dates.format(blog.getCreate_time(),'yyyy-MM-dd')}"></span>
+                           </li>
                            <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0）</li>
                            <li>公众号转载：请在文末添加作者公众号二维码</li>
                        </ui>

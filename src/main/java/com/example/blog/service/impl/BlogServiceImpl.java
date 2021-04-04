@@ -10,10 +10,8 @@ package com.example.blog.service.impl;
 import com.example.blog.mapper.BlogMap;
 import com.example.blog.mapper.TagMap;
 import com.example.blog.mapper.TypeMap;
-import com.example.blog.pojo.Blog;
-import com.example.blog.pojo.Tag;
-import com.example.blog.pojo.Type;
-import com.example.blog.pojo.User;
+import com.example.blog.mapper.UserMap;
+import com.example.blog.pojo.*;
 import com.example.blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +29,8 @@ public class BlogServiceImpl implements BlogService {
     TypeMap typeMap;
     @Autowired
     TagMap tagMap;
+    @Autowired
+    UserMap userMap;
 
     @Override
     public List<Blog> getAllBlogs() {
@@ -39,7 +39,10 @@ public class BlogServiceImpl implements BlogService {
             System.out.println(blog.getUpdate_time());
             /*将blog中的Type属性补全*/
             Type type = typeMap.getTypeById(blog.getType_id());
+            User user = userMap.getUserById(blog.getUser_id());
+            System.out.println(user);
             /*System.out.println(type);*/
+            blog.setUser(user);
             blog.setType(type);
         }
 
@@ -163,5 +166,43 @@ public class BlogServiceImpl implements BlogService {
     public void deleteBlogById(Long id) {
         blogMap.deleteBlogById(id);
         blogMap.deleteBlogTagById(id);
+    }
+
+    @Override
+    public void addBlogView(Blog blog) {
+        blogMap.addBlogView(blog);
+    }
+
+    @Override
+    public List<BlogTop> getBlogTop(Integer num) {
+        List<BlogTop> blogTop = blogMap.getBlogTop(num);
+        return blogTop;
+    }
+
+    /*注入实体类user*/
+    @Override
+    public void setUser(Blog blog) {
+        User user = userMap.getUserById(blog.getUser_id());
+        blog.setUser(user);
+
+    }
+
+    /*注入实体类type*/
+    @Override
+    public void setType(Blog blog) {
+        Type type = typeMap.getTypeById(blog.getType_id());
+        blog.setType(type);
+    }
+
+    /*注入实体类的列表tags*/
+    @Override
+    public void setTag(Blog blog) {
+        List<Tag> tags = tagMap.getBlogTags(blog);
+        blog.setTags(tags);
+      /*  for (Tag tag:tags
+             ) {
+            System.out.println(tag);
+
+        }*/
     }
 }

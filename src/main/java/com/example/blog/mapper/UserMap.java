@@ -22,4 +22,7 @@ public interface UserMap {
     @Select("Select * from user")
     List<User> getusers();
 
+    @Select("Select * from user where id=#{id}")
+    User getUserById(Integer id);
+
 }

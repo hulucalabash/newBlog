@@ -8,6 +8,7 @@ package com.example.blog.service;
         **/
 
 import com.example.blog.pojo.Blog;
+import com.example.blog.pojo.BlogTop;
 
 import java.util.List;
 
@@ -33,5 +34,14 @@ public interface BlogService {
 
     /*根据id删除blog*/
     void deleteBlogById(Long id);
+    /*访问一次路由浏览次数加一*/
+    void  addBlogView(Blog blog);
+
+    /*获取首页右边的博客推荐列表*/
+    List<BlogTop> getBlogTop(Integer num);
+
+    void setUser(Blog blog);
+    void setType(Blog blog);
+    void setTag(Blog blog);
 
 }

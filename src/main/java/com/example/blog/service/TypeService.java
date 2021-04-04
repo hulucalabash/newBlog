@@ -9,6 +9,7 @@ package com.example.blog.service;
 
 import com.example.blog.mapper.TypeMap;
 import com.example.blog.pojo.Type;
+import com.example.blog.pojo.TypeTop;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -28,5 +29,6 @@ public interface TypeService {
     List<Type> getAllTypes();
     Type getTypeById(Integer id);
     Type getTypeByName(String name);
+    List<TypeTop> getTypeTop(Integer num);
 
 }
