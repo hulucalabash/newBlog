@@ -44,7 +44,8 @@ public interface TypeMap {
     Type getTypeByName(String name);
 
     /*获得首页推荐的type*/
-    @Select("Select type.name ,count(*) as num FROM blog,type\n" +
+    //联表查询
+    @Select("Select type.id, type.name ,count(*) as num FROM blog,type\n" +
             " WHERE type.id=blog.type_id \n" +
             "GROUP BY blog.type_id\n" +
             "ORDER BY count(*) DESC;")

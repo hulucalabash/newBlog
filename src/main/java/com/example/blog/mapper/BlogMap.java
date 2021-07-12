@@ -38,6 +38,9 @@ public interface BlogMap {
     @Select("Select * from blog where id=#{id}")
     Blog getBlogById(Long id);
 
+    @Select("Select blogtag.blog_id from blogtag where blogtag.tag_id=#{id}")
+    List<Long> getBlogIdByTagId(Integer id);
+
     @Update("Update blog set title=#{title},content=#{content},first_picture=#{first_picture}," +
             "flag=#{flag},appreciation=#{appreciation},share_statement=#{share_statement}," +
             "commentable=#{commentable},recommend=#{recommend},update_time=#{update_time}," +
@@ -50,6 +53,14 @@ public interface BlogMap {
     @Select("Select type_id from blog where id=#{id}")
     Integer getTypeIdByBlogId(Long id);
 
+    @Select("Select * from blog where type_id=#{id}")
+    List<Blog> getTypeBlogByBlogId(Integer id);
+
+    @Select("SELECT b.id,b.CREATE_time,b.description,b.views,b.first_picture,b.title,b.type_id,b.user_id\n" +
+            " FROM blog b,blogtag bt,tag t WHERE bt.tag_id=#{id} AND b.id=bt.blog_id \n" +
+            "GROUP BY t.id;")
+    List<Blog> getTagBlogByBlogId(Integer id);
+
     @Delete("Delete from blog where id=#{id}")
     void deleteBlogById(Long id);
 
@@ -61,4 +72,17 @@ public interface BlogMap {
 
     @Update("Update blog set views=#{views} where id=#{id}")
     void addBlogView(Blog blog);
+
+    //获取归档对应的年份
+    @Select("SELECT DATE_FORMAT(blog.CREATE_time,'%Y') \n" +
+            "as YEAR from blog GROUP BY YEAR ORDER BY YEAR DESC")
+    List<Integer> getYear();
+
+    @Select("\n" +
+            "SELECT * FROM blog WHERE\n" +
+            " DATE_FORMAT(blog.CREATE_time,'%Y')=#{id}")
+    List<Blog> getBlogsByYear(Integer id);
+
+   /* @Select("Select count(id) from blog")
+    Integer countBlog();*/
 }

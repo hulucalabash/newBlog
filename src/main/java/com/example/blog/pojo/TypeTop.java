@@ -11,8 +11,26 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TypeTop {
+    private Integer id;
     private String name;
     private Integer num;
+
+    @Override
+    public String toString() {
+        return "TypeTop{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", num=" + num +
+                '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -28,13 +46,5 @@ public class TypeTop {
 
     public void setNum(Integer num) {
         this.num = num;
-    }
-
-    @Override
-    public String toString() {
-        return "TypeTop{" +
-                "name='" + name + '\'' +
-                ", num=" + num +
-                '}';
     }
 }

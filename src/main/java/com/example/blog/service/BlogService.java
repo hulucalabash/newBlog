@@ -11,6 +11,7 @@ import com.example.blog.pojo.Blog;
 import com.example.blog.pojo.BlogTop;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BlogService {
     /*获得所有blogs*/
@@ -26,6 +27,11 @@ public interface BlogService {
     /*根据title获取Blog*/
     Blog getBlogByTitle(Blog blog);
 
+    /*获取分类博客*/
+    List<Blog> getTypeBlog(Integer id);
+    /*获取标签博客*/
+    List<Blog> getTagBlog(Integer id);
+
     /*修改blog*/
     void updateBlog(Blog blog);
 
@@ -40,6 +46,10 @@ public interface BlogService {
     /*获取首页右边的博客推荐列表*/
     List<BlogTop> getBlogTop(Integer num);
 
+    /*获取归档的年份博客*/
+    Map<Integer,List<Blog>> archivesBlog();
+    /*获取博客数量*/
+  /*  Integer countBlog();*/
     void setUser(Blog blog);
     void setType(Blog blog);
     void setTag(Blog blog);

@@ -24,437 +24,72 @@
                     </div>
                     <div class="right aligned column">
                         <!--right aligned设置为右对齐-->
-                        共<h2 class="ui orange header m-inline-block">14</h2>篇<!--m-inline-block属性将h3的block性质修改-->
+                        共<h2 class="ui orange header m-inline-block" th:text="${#arrays.length(alltypes)}">14</h2>个<!--m-inline-block属性将h3的block性质修改-->
                     </div>
                 </div>
             </div>
             <div class="ui attached segment m-padded-tb-large">
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui teal basic button">
+                <div class="ui labeled button m-margin-tb-tiny" tabindex="0" th:each="type:${alltypes}" >
+                    <a class="ui  basic button" th:href="@{'/types/'+${type.id}}" th:text="${type.name}" th:classappend="${type.id==ID}?'teal'">
                          思考与感悟
-                    </div>
-                    <a href="#" class="ui basic teal left pointing label">
-                        8
+                    </a>
+                    <a href="#" class="ui basic  left pointing label" th:href="@{'/types/'+${type.id}}" th:classappend="${type.id==ID}?'teal'">
+                        <span th:text="${type.num}">8</span>
                     </a>
                 </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         开发者手册
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         开发者手册
-                    </div>
-                    <a href="#" class="ui ba left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         开发者手册
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         开发者手册
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
-                <div class="ui labeled button m-margin-tb-tiny" tabindex="0">
-                    <div class="ui  basic button">
-                         清单
-                    </div>
-                    <a href="#" class="ui basic  left pointing label">
-                        8
-                    </a>
-                </div>
+
             </div>
             <div class="ui top attached teal segment">
-                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large">
+                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large" th:each="blog:${pageInfo.list}">
                     <div class="ui mobile reversed stackable  grid">
                         <!--stackable自适应 小屏幕自动换行
                          ???????mobile  reversed 无法倒置??????-->
 
                         <div class="eleven wide column">
-                            <h3 class="ui header">你喜欢麻衣学姐吗？</h3>
-                            <p class="m-text m-text-font-1 " >这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
+                            <h3 class="ui header" th:text="${blog.title}">你喜欢麻衣学姐吗？</h3>
+                            <p class="m-text m-text-font-1 " th:text="${blog.description}">这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
                             <div class="ui stackable  grid">
                                 <div class="ui eleven wide column">
                                     <div class="ui mini horizontal link list">
                                         <!--设置水平horizontal的列表------list=>item-->
                                         <div class="item">
-                                            <img src="./static/img/1.jpg" alt="" class="ui avatar image" >
-                                            <div class="content"><a href="#" class="header">呼噜</a></div>
+                                            <img src="../static/img/1.jpg" alt="" class="ui avatar image" th:src="@{${blog.getUser().avatar}}">
+                                            <div class="content"><a href="#" class="header" th:text="${blog.getUser().nickname}">呼噜</a></div>
 
                                         </div>
                                         <div class="item">
-                                            <i class="calendar icon"></i>2021/2/2
+                                            <i class="calendar icon"></i>
                                         </div>
                                         <div class="item">
-                                            <i class="eye icon"></i>123
+                                            <span th:text="${#dates.format(blog.create_time,'yyyy-MM-dd')}"></span>
+                                        </div>
+                                        <div class="item">
+                                            <i class="eye icon"></i>
+                                        </div>
+                                        <div class="item">
+                                            <span th:text="${blog.views}"></span>
                                         </div>
                                     </div>
+                                    <div>
+                                        <span th:each="tag:${blog.getTags()}">
+                                            <span class="ui teal basic mini left pointing label" th:text="${tag.name}"></span>
+                                        </span>
+                                    </div>
+
                                 </div>
                                 <div class="five wide column">
-                                    <a href="#" target="_blank" class="ui teal basic medium label ">认知升级</a><!--设置为连接-->
-
+                                    <a href="#" target="_blank" class="ui teal basic medium label " th:text="${blog.getType().name}">认知升级</a><!--设置为连接-->
                                 </div>
                             </div>
                         </div>
                         <div class="right aligned five wide column">
                             <a href="#" target="_blank" ><!--打开新页面-->
-                                <img src="./static/img/1.jpg" class="ui rounded image m-img-size-tiny"></a>
+                                <img src="../static/img/1.jpg" th:src="@{${blog.first_picture}}" class="ui rounded image m-img-size-tiny"></a>
 
                         </div>
                     </div>
                 </div>
-                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large">
-                    <div class="ui mobile reversed stackable  grid">
-                        <!--stackable自适应 小屏幕自动换行
-                         ???????mobile  reversed 无法倒置??????-->
 
-                        <div class="eleven wide column">
-                            <h3 class="ui header">你喜欢麻衣学姐吗？</h3>
-                            <p class="m-text m-text-font-1 " >这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
-                            <div class="ui stackable  grid">
-                                <div class="ui eleven wide column">
-                                    <div class="ui mini horizontal link list">
-                                        <!--设置水平horizontal的列表------list=>item-->
-                                        <div class="item">
-                                            <img src="./static/img/1.jpg" alt="" class="ui avatar image" >
-                                            <div class="content"><a href="#" class="header">呼噜</a></div>
-
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2021/2/2
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i>123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank" class="ui teal basic medium label ">认知升级</a><!--设置为连接-->
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right aligned five wide column">
-                            <a href="#" target="_blank" ><!--打开新页面-->
-                                <img src="./static/img/1.jpg" class="ui rounded image m-img-size-tiny"></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large">
-                    <div class="ui mobile reversed stackable  grid">
-                        <!--stackable自适应 小屏幕自动换行
-                         ???????mobile  reversed 无法倒置??????-->
-
-                        <div class="eleven wide column">
-                            <h3 class="ui header">你喜欢麻衣学姐吗？</h3>
-                            <p class="m-text m-text-font-1 " >这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
-                            <div class="ui stackable  grid">
-                                <div class="ui eleven wide column">
-                                    <div class="ui mini horizontal link list">
-                                        <!--设置水平horizontal的列表------list=>item-->
-                                        <div class="item">
-                                            <img src="./static/img/1.jpg" alt="" class="ui avatar image" >
-                                            <div class="content"><a href="#" class="header">呼噜</a></div>
-
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2021/2/2
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i>123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank" class="ui teal basic medium label ">认知升级</a><!--设置为连接-->
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right aligned five wide column">
-                            <a href="#" target="_blank" ><!--打开新页面-->
-                                <img src="./static/img/1.jpg" class="ui rounded image m-img-size-tiny"></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large">
-                    <div class="ui mobile reversed stackable  grid">
-                        <!--stackable自适应 小屏幕自动换行
-                         ???????mobile  reversed 无法倒置??????-->
-
-                        <div class="eleven wide column">
-                            <h3 class="ui header">你喜欢麻衣学姐吗？</h3>
-                            <p class="m-text m-text-font-1 " >这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
-                            <div class="ui stackable  grid">
-                                <div class="ui eleven wide column">
-                                    <div class="ui mini horizontal link list">
-                                        <!--设置水平horizontal的列表------list=>item-->
-                                        <div class="item">
-                                            <img src="./static/img/1.jpg" alt="" class="ui avatar image" >
-                                            <div class="content"><a href="#" class="header">呼噜</a></div>
-
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2021/2/2
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i>123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank" class="ui teal basic medium label ">认知升级</a><!--设置为连接-->
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right aligned five wide column">
-                            <a href="#" target="_blank" ><!--打开新页面-->
-                                <img src="./static/img/1.jpg" class="ui rounded image m-img-size-tiny"></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large">
-                    <div class="ui mobile reversed stackable  grid">
-                        <!--stackable自适应 小屏幕自动换行
-                         ???????mobile  reversed 无法倒置??????-->
-
-                        <div class="eleven wide column">
-                            <h3 class="ui header">你喜欢麻衣学姐吗？</h3>
-                            <p class="m-text m-text-font-1 " >这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
-                            <div class="ui stackable  grid">
-                                <div class="ui eleven wide column">
-                                    <div class="ui mini horizontal link list">
-                                        <!--设置水平horizontal的列表------list=>item-->
-                                        <div class="item">
-                                            <img src="./static/img/1.jpg" alt="" class="ui avatar image" >
-                                            <div class="content"><a href="#" class="header">呼噜</a></div>
-
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2021/2/2
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i>123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank" class="ui teal basic medium label ">认知升级</a><!--设置为连接-->
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right aligned five wide column">
-                            <a href="#" target="_blank" ><!--打开新页面-->
-                                <img src="./static/img/1.jpg" class="ui rounded image m-img-size-tiny"></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large">
-                    <div class="ui mobile reversed stackable  grid">
-                        <!--stackable自适应 小屏幕自动换行
-                         ???????mobile  reversed 无法倒置??????-->
-
-                        <div class="eleven wide column">
-                            <h3 class="ui header">你喜欢麻衣学姐吗？</h3>
-                            <p class="m-text m-text-font-1 " >这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
-                            <div class="ui stackable  grid">
-                                <div class="ui eleven wide column">
-                                    <div class="ui mini horizontal link list">
-                                        <!--设置水平horizontal的列表------list=>item-->
-                                        <div class="item">
-                                            <img src="./static/img/1.jpg" alt="" class="ui avatar image" >
-                                            <div class="content"><a href="#" class="header">呼噜</a></div>
-
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2021/2/2
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i>123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank" class="ui teal basic medium label ">认知升级</a><!--设置为连接-->
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right aligned five wide column">
-                            <a href="#" target="_blank" ><!--打开新页面-->
-                                <img src="./static/img/1.jpg" class="ui rounded image m-img-size-tiny"></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large">
-                    <div class="ui mobile reversed stackable  grid">
-                        <!--stackable自适应 小屏幕自动换行
-                         ???????mobile  reversed 无法倒置??????-->
-
-                        <div class="eleven wide column">
-                            <h3 class="ui header">你喜欢麻衣学姐吗？</h3>
-                            <p class="m-text m-text-font-1 " >这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
-                            <div class="ui stackable  grid">
-                                <div class="ui eleven wide column">
-                                    <div class="ui mini horizontal link list">
-                                        <!--设置水平horizontal的列表------list=>item-->
-                                        <div class="item">
-                                            <img src="./static/img/1.jpg" alt="" class="ui avatar image" >
-                                            <div class="content"><a href="#" class="header">呼噜</a></div>
-
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2021/2/2
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i>123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank" class="ui teal basic medium label ">认知升级</a><!--设置为连接-->
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right aligned five wide column">
-                            <a href="#" target="_blank" ><!--打开新页面-->
-                                <img src="./static/img/1.jpg" class="ui rounded image m-img-size-tiny"></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="ui  m-mobile-lr-clear padded vertical segment m-padded-tb-large">
-                    <div class="ui mobile reversed stackable  grid">
-                        <!--stackable自适应 小屏幕自动换行
-                         ???????mobile  reversed 无法倒置??????-->
-
-                        <div class="eleven wide column">
-                            <h3 class="ui header">你喜欢麻衣学姐吗？</h3>
-                            <p class="m-text m-text-font-1 " >这个世界只有一种正义，就是对麻衣学姐的热爱，以及麻衣学姐就是一切的人间正义！...尽管有很多二次元，这部番也没有看完，但是哪个lsp不喜欢麻衣姐姐呢？...</p>
-                            <div class="ui stackable  grid">
-                                <div class="ui eleven wide column">
-                                    <div class="ui mini horizontal link list">
-                                        <!--设置水平horizontal的列表------list=>item-->
-                                        <div class="item">
-                                            <img src="./static/img/1.jpg" alt="" class="ui avatar image" >
-                                            <div class="content"><a href="#" class="header">呼噜</a></div>
-
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i>2021/2/2
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i>123
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank" class="ui teal basic medium label ">认知升级</a><!--设置为连接-->
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right aligned five wide column">
-                            <a href="#" target="_blank" ><!--打开新页面-->
-                                <img src="./static/img/1.jpg" class="ui rounded image m-img-size-tiny"></a>
-
-                        </div>
-                    </div>
-                </div>
             </div>
             <!--footer-->
             <div class="ui bottom attached segment">
@@ -493,7 +128,7 @@
                 <div class="three wide column">
                     <div class="ui link list">
                         <div class="item">
-                            <img src="static/img/wechat.png " class="ui rounded image" alt="" style="width: 100px" >
+                            <img src="../static/img/wechat.png " th:src="@{/img/wechat.png}" class="ui rounded image" alt="" style="width: 100px" >
                         </div>
                     </div>
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TagTop {
+    private Integer id;
     private String name;
     private Integer num;
 
@@ -30,10 +31,20 @@ public class TagTop {
         this.num = num;
     }
 
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "TypeTop{" +
-                "name='" + name + '\'' +
+        return "TagTop{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", num=" + num +
                 '}';
     }

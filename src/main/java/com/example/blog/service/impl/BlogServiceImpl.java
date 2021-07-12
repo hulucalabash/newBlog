@@ -17,8 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BlogServiceImpl implements BlogService {
@@ -107,6 +106,28 @@ public class BlogServiceImpl implements BlogService {
 
     }
 
+    /*获得分类页面上的blog*/
+    @Override
+    public List<Blog> getTypeBlog(Integer id) {
+        List<Blog> typeBlogs = blogMap.getTypeBlogByBlogId(id);
+        return typeBlogs;
+    }
+
+    /*获得分类页面上的blog*/
+    @Override
+    public List<Blog> getTagBlog(Integer id) {
+        List<Blog> tagBlogs = new ArrayList<>();
+        List<Long> blogIds = blogMap.getBlogIdByTagId(id);
+        for (Long blogId:blogIds
+             ) {
+            Blog blog = blogMap.getBlogById(blogId);
+            tagBlogs.add(blog);
+
+        }
+
+        return tagBlogs;
+    }
+
     /*更新blog*/
     @Override
     public void updateBlog(Blog blog) {
@@ -178,6 +199,27 @@ public class BlogServiceImpl implements BlogService {
         List<BlogTop> blogTop = blogMap.getBlogTop(num);
         return blogTop;
     }
+
+    /*获取归档博客*/
+    @Override
+    public Map<Integer,List<Blog>> archivesBlog() {
+        Map<Integer,List<Blog>>map =new HashMap<>();
+        List<Integer> years = blogMap.getYear();
+        for (Integer year:years
+             ) {
+            List<Blog> blogs = blogMap.getBlogsByYear(year);
+            map.put(year,blogs);
+        }
+        return map;
+
+
+    }
+
+  /*  @Override
+    public Integer countBlog() {
+   Integer countBlog = blogMap.countBlog();
+        return countBlog;
+    }*/
 
     /*注入实体类user*/
     @Override

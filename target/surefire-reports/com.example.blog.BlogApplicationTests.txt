@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.example.blog.BlogApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 8.733 s <<< FAILURE! - in com.example.blog.BlogApplicationTests
+SearchGoods  Time elapsed: 1.157 s  <<< ERROR!
+java.net.ConnectException: Timeout connecting to [localhost/127.0.0.1:9200]
+	at com.example.blog.BlogApplicationTests.SearchGoods(BlogApplicationTests.java:59)
+Caused by: java.net.ConnectException: Timeout connecting to [localhost/127.0.0.1:9200]
+
+createIndexTest  Time elapsed: 1.019 s  <<< ERROR!
+java.net.ConnectException: Timeout connecting to [localhost/127.0.0.1:9200]
+	at com.example.blog.BlogApplicationTests.createIndexTest(BlogApplicationTests.java:52)
+Caused by: java.net.ConnectException: Timeout connecting to [localhost/127.0.0.1:9200]
+

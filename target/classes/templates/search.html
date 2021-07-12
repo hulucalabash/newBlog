@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment::head(~{::title})">
+    <meta charset="UTF-8">
+    <title>搜索框</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/search_style.css">
+
+</head>
+<body>
+<div class="ui attached segment">
+    <div class="ui  padded vertical segment m-padded-big m-padded-right-big" th:each="good:${goodLists}">
+        <div class="ui mobile  reversed stackable  grid">
+            <!--stackable
+             ???????mobile  reversed 无法倒置??????-->
+
+            <div class="eleven wide column">
+                <div class="ui grid">
+                    <div class="ui eleven wide column">
+                        <div class="ui mini horizontal link list">
+                            <!--设置水平horizontal的列表------list=>item-->
+                            <div class="item">
+
+                                <div class="content"><a href="#" class="header" th:text="${good.title}">呼噜</a></div>
+
+                            </div>
+
+                            <div class="item">
+                                <div class="content" th:text="${good.price}">11</div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="five wide column m-right-float">
+                <a href="#" target="_blank" ><!--打开新页面-->
+                    <!--首图-->
+                    <img src="./static/img/1.jpg" alt="" th:src="@{${good.img}}" class="ui rounded image m-img-size-tiny"></a>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>

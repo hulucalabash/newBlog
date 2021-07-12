@@ -44,7 +44,7 @@ public interface TagMap {
     @Select("Select * from tag where name=#{name}")
     Tag getTagByName(String name);
 
-    @Select("SELECT t.name,count(*) as num FROM blogtag bt,tag t\n" +
+    @Select("SELECT t.id,t.name,count(*) as num FROM blogtag bt,tag t\n" +
             "WHERE  t.id=bt.tag_id\n" +
             "GROUP BY t.name;\n")
     List<TagTop> getTagTop(Integer num);
